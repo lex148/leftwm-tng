@@ -11,4 +11,4 @@ cp THEME_FROM_THIS_REPO .
 ln -s THEME_NAME current
 ```
 
-![](https://github.com/leftwm/leftwm-tng/raw/master/screenshot.jpg)
+![](https://github.com/lex148/leftwm-tng/raw/master/screenshot.jpg)
