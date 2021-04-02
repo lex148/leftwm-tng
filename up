@@ -21,20 +21,15 @@ fi
 monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
 
 #TOP BAR
-leftwm-state -t $SCRIPTPATH/sizes_top.liquid -q | while read -r width x y
-do 
-  monitor=$monitor offsetx=$x offsety=$y width=$width polybar -c $SCRIPTPATH/polybar_top.config topbar &> /dev/null &
-done
+polybar -c $SCRIPTPATH/polybar_top.ini topbar &> /dev/null &
 
 #LEFT BAR
 conky -c $SCRIPTPATH/conky.config &> /dev/null
 
-#BOTTOM BARS
+##BOTTOM BARS
 index=0
 leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y
 do 
-  barname="mainbar$index"
-  monitor=$monitor offsetx=$x offsety=$y width=$width polybar -c $SCRIPTPATH/polybar_bottom.config $barname &> /dev/null &
+  monitor=$monitor offsetx=$x offsety=$y width=$width polybar -c $SCRIPTPATH/polybar_bottom.ini mainbar0 &> /dev/null &
   let index=index+1
 done
-
